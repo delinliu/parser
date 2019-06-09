@@ -3,22 +3,17 @@ package com.delin.tokenizer;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.apache.commons.io.Charsets;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;
-import java.util.regex.Pattern;
 
 @RunWith(DataProviderRunner.class)
 public class QueryTokenizerTest {
 
     private static String BASE_FOLDER = "src/test/resources/query/";
-
-    private static String test01 = "src/test/resources/query/tokenizer-test01.sql";
-    private static String result01 = "src/test/resources/query/tokenizer-test01-tokens.txt";
 
     @DataProvider
     public static Object[][] validTokenDataProvider() {
@@ -72,7 +67,7 @@ public class QueryTokenizerTest {
         String expectedException = FileUtils.readFileToString(new File(BASE_FOLDER + exceptionFilename), "utf-8");
         try {
             String[] s = new QueryTokenizer().tokenize(originContent);
-            for(String c : s) {
+            for (String c : s) {
                 System.out.println(c);
             }
             Assert.assertTrue("Expect exception but not find", false);
